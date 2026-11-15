@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הדפסת לקוחות</title>
+<script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<style>
+  body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; font-size: 14px; color: #111827; }
+  .p { padding: 10px; }
+  h1 { font-size: 16px; margin: 0 0 8px; }
+  .row { display: flex; gap: 6px; margin-bottom: 8px; }
+  button { font: inherit; border: 0; border-radius: 6px; padding: 7px 10px; cursor: pointer; background: #e5e7eb; }
+  button.main { background: #2563eb; color: #fff; font-weight: 600; width: 100%; padding: 10px; font-size: 15px; }
+  button:disabled { background: #d1d5db; color: #6b7280; cursor: not-allowed; }
+  input[type=text] { flex: 1; padding: 6px 8px; border: 1px solid #9ca3af; border-radius: 6px; font: inherit; min-width: 0; }
+  #sheetInfo { color: #6b7280; font-size: 12px; margin-bottom: 6px; }
+  #list { max-height: 55vh; overflow-y: auto; border: 1px solid #e5e7eb; border-radius: 6px; }
+  .c { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-bottom: 1px solid #f3f4f6; cursor: pointer; }
+  .c.on { background: #eff6ff; }
+  .c.z { color: #9ca3af; }
+  .c .n { flex: 1; }
+  .c .k { font-size: 12px; background: #e5e7eb; border-radius: 10px; padding: 1px 8px; }
+  .w { background: #fffbeb; border: 1px solid #fcd34d; border-radius: 6px; padding: 6px 8px; margin: 8px 0; font-size: 12px; }
+  .hidden { display: none; }
+  #msg { margin-top: 8px; font-size: 13px; }
+  #msg.err { color: #b91c1c; }
+  #msg.ok { color: #047857; }
+  .foot { position: sticky; bottom: 0; background: #fff; padding: 8px 0 2px; }
+</style>
+</head>
+<body>
+<div class="p">
+  <h1>הדפסת לקוחות נבחרים</h1>
+  <div id="sheetInfo"></div>
+  <div class="row">
+    <button id="reload" type="button">רענן מהגיליון</button>
+    <input type="text" id="search" placeholder="חיפוש לקוח...">
+  </div>
+  <div class="row">
+    <button id="selAll" type="button">בחר את כולם</button>
+    <button id="selNone" type="button">נקה</button>
+  </div>
+  <div id="list"></div>
+  <div id="gen" class="w hidden"></div>
+  <label id="genLbl" class="hidden" style="display:block;margin:6px 0"><input type="checkbox" id="genPrint"> כלול הערות כלליות</label>
+  <div class="foot">
+    <button class="main" id="go" type="button" disabled>צור הדפסה</button>
+    <div id="msg"></div>
+  </div>
+</div>
+<script src="core.js"></script>
+<script src="taskpane.js"></script>
+</body>
+</html>
